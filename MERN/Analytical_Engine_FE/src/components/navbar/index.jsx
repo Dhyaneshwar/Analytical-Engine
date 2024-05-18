@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import PixIcon from '@mui/icons-material/Pix'
 import { Box, Typography, useTheme } from '@mui/material'
-import FlexBetween from '@/components/FlexBetween'
+import FlexBetween from '@/utils/FlexBetween'
 import './navbar.css'
 
 const Navbar = (props) => {
@@ -16,27 +16,27 @@ const Navbar = (props) => {
       </FlexBetween>
 
       <FlexBetween gap="2rem">
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        <div>
           <NavLink to="/contacts">Contacts</NavLink>
-        </Box>
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        </div>
+        <div>
           <NavLink to="/contents">Contents</NavLink>
-        </Box>
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        </div>
+        <div>
           <NavLink to="/events">Events</NavLink>
-        </Box>
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        </div>
+        <div>
           <NavLink to="/organisations">Organisations</NavLink>
-        </Box>
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        </div>
+        <div>
           <NavLink to="/recommendations">Recommendations</NavLink>
-        </Box>
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        </div>
+        <div>
           <NavLink to="/users">Users</NavLink>
-        </Box>
-        <Box sx={{ '&:hover': { color: palette.secondary.main } }}>
+        </div>
+        <div>
           <NavLink to="/predictions">Predictions</NavLink>
-        </Box>
+        </div>
       </FlexBetween>
     </FlexBetween>
   )
