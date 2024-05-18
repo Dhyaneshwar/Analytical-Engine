@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { yourAction } from "../redux/actions/yourAction";
+import { yourAction } from "@/redux/actions/yourAction";
 import {
   getYourReducerBye,
   getYourReducerHello,
-} from "../redux/selectors/yourSelector";
+} from "@/redux/selectors/yourSelector";
 import "./YourPath.css";
 import styled from "styled-components";
 

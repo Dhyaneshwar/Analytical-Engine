@@ -1,0 +1,23 @@
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 1rem;
+  border: #292929 solid;
+  width: 100%;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  font-size: 1.7rem;
+}
+
+.nav-links a:hover {
+  color: #665b8a;
+}
+
+.nav-links a.active {
+  border-color: #292929;
+  color: #0ebfa0;
+}

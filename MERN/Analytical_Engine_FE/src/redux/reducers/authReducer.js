@@ -1,4 +1,4 @@
-import { LOG_IN_ACTION, LOG_OUT_ACTION } from "../actions/authAction";
+import { LOG_IN_ACTION, LOG_OUT_ACTION } from "@/redux/actions/authAction";
 
 const initialState = {
   isLoggedIn: false,

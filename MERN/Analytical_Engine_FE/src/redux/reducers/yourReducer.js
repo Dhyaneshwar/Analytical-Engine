@@ -1,4 +1,4 @@
-import { YOUR_ACTION_TYPE } from "../actions/yourAction";
+import { YOUR_ACTION_TYPE } from "@/redux/actions/yourAction";
 
 const initialState = {
   hello: true,
