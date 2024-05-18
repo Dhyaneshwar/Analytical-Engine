@@ -1,24 +1,38 @@
 const express = require("express");
 const body_parser = require("body-parser");
 const mongoose = require("mongoose");
+const helmet = require("helmet");
+const cors = require("cors");
 
+const contactsRoutes = require("./routes/contactsRoutes");
+const contentsRoutes = require("./routes/contentsRoutes");
+const eventsRoutes = require("./routes/eventsRoutes");
+const organisationsRoutes = require("./routes/organisationsRoutes");
+const recommendationsRoutes = require("./routes/recommendationsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
 const HttpError = require("./models/http-errors");
 
 const app = express();
-
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(cors());
 app.use(body_parser.json());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+//   next();
+// });
 
+app.use("/api/contacts", contactsRoutes);
+app.use("/api/contents", contentsRoutes);
+app.use("/api/events", eventsRoutes);
+app.use("/api/organisations", organisationsRoutes);
+app.use("/api/recommendations", recommendationsRoutes);
 app.use("/api/users", usersRoutes);
 
 app.use((req, res, next) => {
@@ -42,6 +56,6 @@ mongoose
   )
   .then(() => {
     PORT = process.env.PORT || 5000;
-    app.listen(PORT);
+    app.listen(PORT, () => console.log("Active port is ", PORT));
   })
   .catch((err) => console.log(err));

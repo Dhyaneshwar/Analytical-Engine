@@ -3,25 +3,25 @@ const uniqueValidator = require("mongoose-unique-validator");
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const contactSchema = new Schema({
   _id: { type: Number, required: true, unique: true },
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
   email: { type: String, required: true },
-  role_id: { type: Number, required: true },
-  position: { type: String },
-  gender: { type: String, required: true },
-  created: { type: Number },
-  organisation_id: { type: Number },
-  picture_name: { type: String },
+  role_id: { type: Number },
   city: { type: String },
   country: { type: String },
   state: { type: String },
-  phone_number: { type: Number },
+  created: { type: Number },
   linkedin_url: { type: String },
   description: { type: String },
+  organisation_id: { type: Number },
+  position: { type: String },
+  gender: { type: String },
+  picture_name: { type: String },
+  phone_number: { type: Number },
 });
 
-userSchema.plugin(uniqueValidator);
+contactSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Contact", contactSchema);
