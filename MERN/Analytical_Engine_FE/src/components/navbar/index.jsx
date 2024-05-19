@@ -1,23 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import PixIcon from '@mui/icons-material/Pix'
-import { Box, Typography, useTheme } from '@mui/material'
+import { useTheme } from '@mui/material'
 import FlexBetween from '@/utils/FlexBetween'
 import './navbar.css'
-import { connect } from 'react-redux'
-import { getContactsRequestAction } from '@/redux/actions/contactsAction'
-import { getContactsSelector } from '@/redux/selectors/contactsSelector'
 
 const Navbar = (props) => {
   const { palette } = useTheme()
-
-  const getContactsHandler = async () => {
-    try {
-      const { getContactsRequest } = props
-      await getContactsRequest()
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   return (
     <FlexBetween className="nav-links" color={palette.grey[300]}>
@@ -30,9 +18,7 @@ const Navbar = (props) => {
 
       <FlexBetween gap="2rem">
         <div>
-          <NavLink to="/contacts" onClick={getContactsHandler}>
-            Contacts
-          </NavLink>
+          <NavLink to="/contacts">Contacts</NavLink>
         </div>
         <div>
           <NavLink to="/contents">Contents</NavLink>
@@ -57,14 +43,4 @@ const Navbar = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    getContacts: getContactsSelector(state),
-  }
-}
-
-const mapDispatchToProps = {
-  getContactsRequest: getContactsRequestAction,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default Navbar
