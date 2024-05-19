@@ -1,20 +1,18 @@
 import React from 'react'
 import DashboardBox from '@/utils/DashboardBox'
-
-import { useTheme } from '@mui/material'
 import BoxHeader from '@/utils/BoxHeader'
 import BarChart from '../../../utils/CustomBarChart'
+import CustomPieChart from '../../../utils/CustomPieChart'
 
 function Row1({ countryCount, stateCount, cityCount }) {
-  const { palette } = useTheme()
   return (
     <>
-      <DashboardBox gridArea="b">
-        <BoxHeader title="Number of Contacts per City" />
-        <BarChart dataCount={cityCount} />
-      </DashboardBox>
       <DashboardBox gridArea="c">
-        <BoxHeader title="Number of Contacts per State" />
+        <BoxHeader title="Cities with more than 3 Contacts" />
+        <CustomPieChart dataCount={cityCount} />
+      </DashboardBox>
+      <DashboardBox gridArea="b">
+        <BoxHeader title="Top 10 States with Contacts" />
         <BarChart dataCount={stateCount} />
       </DashboardBox>
       <DashboardBox gridArea="d">

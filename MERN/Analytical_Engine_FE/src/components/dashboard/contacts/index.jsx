@@ -18,6 +18,7 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
   const [countryCount, setCountryCount] = useState([])
   const [stateCount, setStateCount] = useState([])
   const [cityCount, setCityCount] = useState([])
+  const [domainCount, setDomainCount] = useState([])
 
   const fetchContacts = async () => {
     try {
@@ -27,29 +28,63 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
     }
   }
 
-  const transformCounts = (state, demography) => {
-    const filteredState = _.filter(state, (state) => state[demography])
-    const demographicCounts = _.countBy(filteredState, demography)
-    const transformedArray = _.map(demographicCounts, (count, name) => ({
+  const countOccurrences = (array, key) => {
+    const counts = _.countBy(array, key)
+    return _.map(counts, (count, name) => ({ name, count }))
+  }
+
+  const orderValues = (array) => _.orderBy(array, ['count'], ['desc'])
+
+  const filterTopValues = (array, limit) => {
+    return _.slice(orderValues(array), 0, limit)
+  }
+
+  const extractDomainCounts = (emails) => {
+    const domainCounts = {}
+    emails.forEach((email) => {
+      const domain = email?.substring(email.indexOf('@') + 1)
+      domainCounts[domain] = (domainCounts[domain] || 0) + 1
+    })
+    return domainCounts
+  }
+
+  const transformCounts = (contacts, key, topValues = false, limit = 10) => {
+    const filteredArray = _.filter(contacts, (item) => item[key])
+    const countedItems = countOccurrences(filteredArray, key)
+    const transformedArray = topValues
+      ? filterTopValues(countedItems, limit)
+      : orderValues(countedItems)
+    return transformedArray
+  }
+
+  const getDomainCounts = (contacts, threshold = 1, limit = 5) => {
+    const domainCounts = extractDomainCounts(contacts.map(({ email }) => email))
+    const countContact = _.pickBy(domainCounts, (count) => count > threshold)
+    const transformedArray = _.map(countContact, (count, name) => ({
       name,
       count,
     }))
-    const sortedArray = _.orderBy(transformedArray, ['count'], ['desc'])
-    return _.slice(sortedArray, 0, 10)
+    return filterTopValues(transformedArray, limit)
   }
-
-  useEffect(() => {
-    fetchContacts()
-  }, [getContactsRequest])
 
   useEffect(() => {
     const countByCountry = transformCounts(getContacts, 'country')
     setCountryCount(countByCountry)
-    const countByState = transformCounts(getContacts, 'state')
+
+    const countByState = transformCounts(getContacts, 'state', true)
     setStateCount(countByState)
+
     const countByCity = transformCounts(getContacts, 'city')
-    setCityCount(countByCity)
+    const cityData = countByCity.filter(({ count }) => count > 3)
+    setCityCount(cityData)
+
+    const countByDomain = getDomainCounts(getContacts)
+    setDomainCount(countByDomain)
   }, [getContacts])
+
+  useEffect(() => {
+    fetchContacts()
+  }, [getContactsRequest])
 
   return (
     <Box
@@ -62,7 +97,7 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
         isAboveMediumScreens
           ? {
               gridTemplateColumns: 'repeat(3, minmax(370px, 1fr))',
-              gridTemplateRows: 'repeat(10, minmax(60px, 1fr))',
+              gridTemplateRows: 'repeat(10, 75px)',
               gridTemplateAreas: gridTemplateLargeScreens,
             }
           : {
@@ -78,7 +113,7 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
         stateCount={stateCount}
         cityCount={cityCount}
       />
-      <Row2 />
+      <Row2 domainCount={domainCount} />
     </Box>
   )
 }

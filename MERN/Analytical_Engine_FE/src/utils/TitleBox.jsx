@@ -5,7 +5,7 @@ const TitleBox = styled(Box)({
   fontSize: '3.5rem',
   textTransform: 'uppercase',
   transition: 'all 0.3s',
-  backgroundImage: 'linear-gradient(to right, #1ea06f, #20ff85)',
+  backgroundImage: 'linear-gradient(to right, #a3f894, #0f8860)',
   backgroundClip: 'text',
   display: 'inline-block',
   letterSpacing: '2px',

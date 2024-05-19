@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts'
 
-function CustomBarChart({ dataCount }) {
+function CustomBarChart({ dataCount, angle = -25, textAnchor = 'end' }) {
   return (
     <ResponsiveContainer width="100%" height="85%">
       <BarChart
@@ -21,7 +21,7 @@ function CustomBarChart({ dataCount }) {
           bottom: 15,
         }}
       >
-        <XAxis dataKey="name" angle={-25} textAnchor="end" />
+        <XAxis dataKey="name" angle={angle} textAnchor={textAnchor} />
         <YAxis />
         <Tooltip />
         <Bar

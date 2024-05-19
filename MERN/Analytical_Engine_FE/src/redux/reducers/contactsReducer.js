@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   loading: false,
-  contacts: {},
+  contacts: [],
 }
 
 const contactsReducer = (state = initialState, action) => {
