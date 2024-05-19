@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 import { styled } from '@mui/system'
 
-const TitleBox = styled(Box)({
-  fontSize: '3.5rem',
+const TitleBox = styled(Box)(({ size }) => ({
+  fontSize: size || '3.5rem',
   fontWeight: '600',
   textTransform: 'uppercase',
   transition: 'all 0.3s',
@@ -18,6 +18,6 @@ const TitleBox = styled(Box)({
     transform: 'scale(1.2)',
     textShadow: '0.5rem 0.1rem 2rem rgba(0, 0, 0, 0.2)',
   },
-})
+}))
 
 export default TitleBox

@@ -59,10 +59,19 @@ function Row2({ domainCount, contactData }) {
         <CustomTable rowData={contactData} columnData={contactColumns} />
       </DashboardBox>
       <DashboardBox gridArea="f">
-        <Box p="25px" textAlign="justify">
+        <Box
+          p="25px"
+          textAlign="justify"
+          sx={{
+            backgroundImage: 'linear-gradient(#ffd56f, #11b485)',
+            color: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
           <Typography
             variant="h3"
-            color="#0b8f78"
+            color="inherit"
+            bgcolor="inherit"
             fontWeight={500}
             fontSize={18}
           >
@@ -78,7 +87,7 @@ function Row2({ domainCount, contactData }) {
         </Box>
       </DashboardBox>
       <DashboardBox gridArea="g">
-        <BoxHeader title="Most used domains" />
+        <BoxHeader title="Most used Domains" />
         <BarChart dataCount={domainCount} angle={-10} />
       </DashboardBox>
     </>

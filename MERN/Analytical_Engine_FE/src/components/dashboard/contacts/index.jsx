@@ -3,8 +3,8 @@ import { Box, useMediaQuery } from '@mui/material'
 import { getContactsRequestAction } from '@/redux/actions/contactsAction'
 import { getContactsSelector } from '@/redux/selectors/contactsSelector'
 import {
-  gridTemplateLargeScreens,
-  gridTemplateSmallScreens,
+  contactsGridTemplateLargeScreens,
+  contactsGridTemplateSmallScreens,
 } from '@/const/gridTemplate'
 import Row1 from './Row1'
 import Row2 from './Row2'
@@ -83,7 +83,7 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
 
   useEffect(() => {
     fetchContacts()
-  }, [getContactsRequest])
+  }, [])
 
   return (
     <Box
@@ -97,12 +97,12 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
           ? {
               gridTemplateColumns: 'repeat(3, minmax(370px, 1fr))',
               gridTemplateRows: 'repeat(10, 75px)',
-              gridTemplateAreas: gridTemplateLargeScreens,
+              gridTemplateAreas: contactsGridTemplateLargeScreens,
             }
           : {
-              gridAutoColumns: '1fr',
+              gridAutoColumns: 'minmax(370px, 1fr)',
               gridAutoRows: '80px',
-              gridTemplateAreas: gridTemplateSmallScreens,
+              gridTemplateAreas: contactsGridTemplateSmallScreens,
             }
       }
     >

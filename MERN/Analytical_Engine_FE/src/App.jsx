@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Box, CssBaseline, ThemeProvider } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
 import { themeSettings } from '@/theme'
@@ -15,17 +14,6 @@ import Users from '@/components/dashboard/users'
 import YourPath from '@/components/yourPath/YourPath.jsx'
 import Navbar from '@/components/navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <Home />,
-//   },
-//   {
-//     path: '/yourPath',
-//     element: <YourPath />,
-//   },
-// ])
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), [])
@@ -43,10 +31,9 @@ function App() {
             <Route path="/organisations" element={<Organisations />} />
             <Route path="/recommendations" element={<Recommendations />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/prediction" element={<Prediction />} />
+            {/* <Route path="/predictions" element={<Prediction />} /> */}
             <Route path="/yourPath" element={<YourPath />} />
           </Routes>
-          {/* <RouterProvider router={router} /> */}
         </Box>
       </ThemeProvider>
     </BrowserRouter>

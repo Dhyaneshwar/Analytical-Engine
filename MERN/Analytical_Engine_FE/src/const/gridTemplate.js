@@ -1,4 +1,8 @@
-export const gridTemplateLargeScreens = `
+export const homeGridTemplateLargeScreens = `
+  "a a a"
+`
+
+export const contactsGridTemplateLargeScreens = `
   "a a a"
   "b c d"
   "b c d"
@@ -11,7 +15,7 @@ export const gridTemplateLargeScreens = `
   "e e g"
 `
 
-export const gridTemplateSmallScreens = `
+export const contactsGridTemplateSmallScreens = `
   "a"
   "b"
   "b"

@@ -1,0 +1,234 @@
+.navigation__checkbox {
+  display: none;
+}
+
+.navigation__button {
+  background-color: #fff;
+  position: fixed;
+  top: 0.75rem;
+  right: 1.75rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+@media (max-width: 56.25em) {
+  .navigation__button {
+    top: 0.75rem;
+    right: 1.75rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .navigation__button {
+    top: 0.75rem;
+    right: 1.5rem;
+  }
+}
+.navigation__button:hover {
+  cursor: pointer;
+}
+
+.navigation__background {
+  position: fixed;
+  top: 1.25rem;
+  right: 2.25rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-image: radial-gradient(#7ed56f, #28b485);
+  z-index: 1000;
+  transition: all 0.4s;
+}
+@media (max-width: 56.25em) {
+  .navigation__background {
+    top: 1.25rem;
+    right: 1.75rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .navigation__background {
+    top: 1.25rem;
+    right: 2rem;
+  }
+}
+
+.navigation__nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1500;
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.44, 0.75, 1.33);
+}
+
+.navigation__list {
+  text-align: center;
+  list-style: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navigation__item {
+  margin: 2rem;
+}
+
+.navigation__link {
+  padding: 1rem 2rem;
+  font-size: 2.5rem !important;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  background-image: linear-gradient(
+    120deg,
+    transparent 50%,
+    rgba(255, 255, 255, 0.9) 50%
+  );
+  background-size: 250%;
+  display: inline-block;
+}
+.navigation__link:hover {
+  background-position: 100%;
+  color: green;
+  transform: translateX(1rem);
+}
+
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(85);
+}
+
+.navigation__checkbox:checked ~ .navigation__nav {
+  width: 100%;
+  opacity: 1;
+}
+
+.navigation__icon {
+  position: relative;
+  margin-top: 2rem;
+}
+.navigation__icon,
+.navigation__icon::before,
+.navigation__icon::after {
+  width: 3rem;
+  height: 0.5px;
+  display: inline-block;
+  background-color: #333;
+  backface-visibility: hidden;
+}
+.navigation__icon::before,
+.navigation__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+}
+.navigation__icon::before {
+  top: -0.8rem;
+}
+.navigation__icon::after {
+  top: 0.8rem;
+}
+
+.navigation__button:hover .navigation__icon::before {
+  top: -1.1rem;
+}
+
+.navigation__button:hover .navigation__icon::after {
+  top: 1.1rem;
+}
+
+.navigation__checkbox:not(:checked)
+  ~ .navigation__button
+  .navigation__icon::before {
+  animation: onUncheckedRotationBefore 0.5s;
+}
+
+.navigation__checkbox:not(:checked)
+  ~ .navigation__button
+  .navigation__icon::after {
+  animation: onUncheckedRotationAfter 0.5s;
+}
+
+.navigation__checkbox:checked ~ .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+.navigation__checkbox:checked ~ .navigation__button .navigation__icon::before {
+  animation: onCheckedRotationBefore 0.7s;
+  animation-fill-mode: both;
+}
+.navigation__checkbox:checked ~ .navigation__button .navigation__icon::after {
+  animation: onCheckedRotationAfter 0.7s;
+  animation-fill-mode: both;
+}
+
+@keyframes onCheckedRotationBefore {
+  0% {
+    top: 0rem;
+  }
+  50% {
+    top: 0rem;
+    transform: rotate(-181deg);
+  }
+  55% {
+    top: 0rem;
+    transform: rotate(-175deg);
+  }
+  100% {
+    top: 0rem;
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes onCheckedRotationAfter {
+  0% {
+    top: 0rem;
+  }
+  50% {
+    top: 0rem;
+    transform: rotate(181deg);
+  }
+  55% {
+    top: 0rem;
+    transform: rotate(175deg);
+  }
+  100% {
+    top: 0rem;
+    transform: rotate(-135deg);
+  }
+}
+
+@keyframes onUncheckedRotationBefore {
+  0% {
+    top: 0rem;
+  }
+  50% {
+    top: 0rem;
+    transform: rotate(181deg);
+  }
+  100% {
+    top: inherit;
+    transform: rotate(-135deg);
+  }
+}
+
+@keyframes onUncheckedRotationAfter {
+  0% {
+    top: 0rem;
+  }
+  50% {
+    top: 0rem;
+    transform: rotate(-181deg);
+  }
+  100% {
+    top: inherit;
+    transform: rotate(135deg);
+  }
+}
