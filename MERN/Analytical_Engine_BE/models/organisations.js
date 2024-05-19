@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
 
 const Schema = mongoose.Schema;
 
-const organisationSchema = new Schema({
-  _id: { type: Number, required: true, unique: true },
+const organisationsSchema = new Schema({
+  _id: { type: Number },
   name: { type: String },
   city: { type: String },
   state: { type: String },
@@ -20,6 +19,4 @@ const organisationSchema = new Schema({
   logo_name: { type: String },
 });
 
-organisationSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model("Organisation", organisationSchema);
+module.exports = mongoose.model("Organisation", organisationsSchema);

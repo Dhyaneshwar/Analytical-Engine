@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
 
 const Schema = mongoose.Schema;
 
-const contentSchema = new Schema({
-  _id: { type: Number, required: true, unique: true },
+const contentsSchema = new Schema({
+  _id: { type: Number },
   title: { type: String, required: true },
   description: { type: String },
   content_type: { type: String, required: true },
@@ -15,6 +14,4 @@ const contentSchema = new Schema({
   publication_date: { type: String },
 });
 
-contentSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model("Content", contentSchema);
+module.exports = mongoose.model("Content", contentsSchema);

@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
 
 const Schema = mongoose.Schema;
 
-const recommendationSchema = new Schema({
-  _id: { type: Number, required: true, unique: true },
+const recommendationsSchema = new Schema({
+  _id: { type: Number },
   title: { type: String },
   asset_type: { type: String },
   asset_id: { type: Number },
@@ -20,6 +19,4 @@ const recommendationSchema = new Schema({
   clicked_out: { type: Number },
 });
 
-recommendationSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model("Recommendation", recommendationSchema);
+module.exports = mongoose.model("Recommendation", recommendationsSchema);

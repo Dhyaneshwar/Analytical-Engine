@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
 
 const Schema = mongoose.Schema;
 
-const eventSchema = new Schema({
-  _id: { type: Number, required: true, unique: true },
+const eventsSchema = new Schema({
+  _id: { type: Number },
   title: { type: String },
   event_type: { type: String },
   description: { type: String },
@@ -20,6 +19,4 @@ const eventSchema = new Schema({
   lat: { type: Number },
 });
 
-eventSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model("Event", eventSchema);
+module.exports = mongoose.model("Event", eventsSchema);
