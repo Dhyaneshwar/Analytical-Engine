@@ -1,14 +1,14 @@
 export const gridTemplateLargeScreens = `
-  "a b c"
-  "a b c"
-  "a b c"
-  "a b f"
-  "d e f"
-  "d e f"
-  "d h i"
-  "g h i"
-  "g h j"
-  "g h j"
+  "a a a"
+  "b c d"
+  "b c d"
+  "b c d"
+  "b c f"
+  "e e f"
+  "e e f"
+  "e e g"
+  "e e g"
+  "e e g"
 `
 
 export const gridTemplateSmallScreens = `

@@ -11,6 +11,7 @@ import Row2 from './Row2'
 import Row3 from './Row3'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import TitleRow from './TitleRow'
 
 const Contacts = ({ getContactsRequest, getContacts }) => {
   const isAboveMediumScreens = useMediaQuery('(min-width: 1200px)')
@@ -71,13 +72,13 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
             }
       }
     >
+      <TitleRow title="Data Analysis for Contacts" />
       <Row1
         countryCount={countryCount}
         stateCount={stateCount}
         cityCount={cityCount}
       />
       <Row2 />
-      <Row3 />
     </Box>
   )
 }

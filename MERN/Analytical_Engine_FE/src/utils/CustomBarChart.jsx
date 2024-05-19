@@ -22,7 +22,6 @@ function CustomBarChart({ dataCount }) {
         }}
       >
         <XAxis dataKey="name" angle={-25} textAnchor="end" />
-
         <YAxis />
         <Tooltip />
         <Bar

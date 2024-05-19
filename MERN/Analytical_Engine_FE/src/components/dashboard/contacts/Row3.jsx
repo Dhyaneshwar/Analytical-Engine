@@ -4,10 +4,10 @@ import DashboardBox from '@/utils/DashboardBox'
 function Row3() {
   return (
     <>
-      <DashboardBox bgcolor="white" gridArea="g"></DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="h"></DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="i"></DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="j"></DashboardBox>
+      <DashboardBox gridArea="h"></DashboardBox>
+      <DashboardBox gridArea="h"></DashboardBox>
+      <DashboardBox gridArea="i"></DashboardBox>
+      <DashboardBox gridArea="j"></DashboardBox>
     </>
   )
 }

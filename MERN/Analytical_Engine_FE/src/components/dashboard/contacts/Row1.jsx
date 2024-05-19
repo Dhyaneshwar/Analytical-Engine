@@ -9,15 +9,15 @@ function Row1({ countryCount, stateCount, cityCount }) {
   const { palette } = useTheme()
   return (
     <>
-      <DashboardBox bgcolor="white" gridArea="a">
+      <DashboardBox gridArea="b">
         <BoxHeader title="Number of Contacts per City" />
         <BarChart dataCount={cityCount} />
       </DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="b">
+      <DashboardBox gridArea="c">
         <BoxHeader title="Number of Contacts per State" />
         <BarChart dataCount={stateCount} />
       </DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="c">
+      <DashboardBox gridArea="d">
         <BoxHeader title="Number of Contacts per Country" />
         <BarChart dataCount={countryCount} />
       </DashboardBox>

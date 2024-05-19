@@ -1,12 +1,14 @@
 import React from 'react'
 import DashboardBox from '@/utils/DashboardBox'
+import { Box } from '@mui/material'
+import TitleBox from '../../../utils/TitleBox'
 
 function Row2() {
   return (
     <>
-      <DashboardBox bgcolor="white" gridArea="d"></DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="e"></DashboardBox>
-      <DashboardBox bgcolor="white" gridArea="f"></DashboardBox>
+      <DashboardBox gridArea="e" trn="none"></DashboardBox>
+      <DashboardBox gridArea="f"></DashboardBox>
+      <DashboardBox gridArea="g"></DashboardBox>
     </>
   )
 }
