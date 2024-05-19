@@ -3,6 +3,7 @@ import { styled } from '@mui/system'
 
 const TitleBox = styled(Box)({
   fontSize: '3.5rem',
+  fontWeight: '600',
   textTransform: 'uppercase',
   transition: 'all 0.3s',
   backgroundImage: 'linear-gradient(to right, #a3f894, #0f8860)',
