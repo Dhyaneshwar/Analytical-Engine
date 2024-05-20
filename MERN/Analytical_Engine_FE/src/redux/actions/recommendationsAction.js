@@ -2,6 +2,7 @@ export const GET_ASSET_RECOMMENDATION_REQUEST_ACTION =
   'GET_ASSET_RECOMMENDATION_REQUEST'
 export const GET_ASSET_RECOMMENDATION_RESPONSE_ACTION =
   'GET_ASSET_RECOMMENDATION_RESPONSE'
+export const RESET_RECOMMENDATIONS_ACTION = 'RESET_RECOMMENDATIONS'
 
 export const getAssestRecommendationsRequestAction = (payload) => {
   return {
@@ -14,5 +15,11 @@ export const getAssestRecommendationsResponseAction = (payload) => {
   return {
     type: GET_ASSET_RECOMMENDATION_RESPONSE_ACTION,
     payload,
+  }
+}
+
+export const resetRecommendationsAction = () => {
+  return {
+    type: RESET_RECOMMENDATIONS_ACTION,
   }
 }

@@ -10,9 +10,10 @@ import Row1 from './Row1'
 import Row2 from './Row2'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-import TitleRow from './TitleRow'
+import TitleRow from '@/utils/TitleRow'
+import { resetContactsAction } from '../../../redux/actions/contactsAction'
 
-const Contacts = ({ getContactsRequest, getContacts }) => {
+const Contacts = ({ getContactsRequest, getContacts, resetContacts }) => {
   const isAboveMediumScreens = useMediaQuery('(min-width: 1200px)')
   const [countryCount, setCountryCount] = useState([])
   const [stateCount, setStateCount] = useState([])
@@ -83,6 +84,10 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
 
   useEffect(() => {
     fetchContacts()
+
+    return () => {
+      resetContacts()
+    }
   }, [])
 
   return (
@@ -129,6 +134,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getContactsRequest: getContactsRequestAction,
+  resetContacts: resetContactsAction,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts)

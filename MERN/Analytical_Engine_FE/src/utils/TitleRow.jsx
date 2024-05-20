@@ -1,6 +1,6 @@
 import React from 'react'
-import DashboardBox from '../../../utils/DashboardBox'
-import TitleBox from '../../../utils/TitleBox'
+import DashboardBox from './DashboardBox'
+import TitleBox from './TitleBox'
 import { useMediaQuery } from '@mui/material'
 
 function TitleRow({ title }) {

@@ -1,7 +1,8 @@
 import React from 'react'
+import Layout from '../../../utils/Layout'
 
 function Events() {
-  return <div>Events</div>
+  return <Layout title="Data Analysis for Events" />
 }
 
 export default Events
