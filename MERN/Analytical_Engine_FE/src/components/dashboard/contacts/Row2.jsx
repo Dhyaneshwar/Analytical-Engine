@@ -10,52 +10,49 @@ function Row2({ domainCount, contactData }) {
     {
       field: '_id',
       headerName: 'id',
-      flex: 0.25,
+      flex: 0.15,
     },
     {
       field: 'first_name',
       headerName: 'First Name',
-      flex: 0.25,
+      flex: 0.3,
     },
     {
       field: 'last_name',
       headerName: 'Last Name',
-      flex: 0.25,
+      flex: 0.3,
     },
     {
       field: 'email',
       headerName: 'Email',
-      flex: 0.5,
+      flex: 0.65,
     },
     {
       field: 'city',
       headerName: 'City',
-      flex: 0.25,
+      flex: 0.35,
     },
     {
       field: 'state',
       headerName: 'State',
-      flex: 0.25,
+      flex: 0.35,
     },
     {
       field: 'country',
       headerName: 'Country',
-      flex: 0.25,
+      flex: 0.35,
     },
     {
       field: 'description',
       headerName: 'Description',
-      flex: 1.25,
+      flex: 2,
       renderCell: (params) => `${params.value}`,
     },
   ]
   return (
     <>
       <DashboardBox gridArea="e" trn="none">
-        <BoxHeader
-          title="List of Contacts"
-          sideText={`${contactData?.length} Contacts`}
-        />
+        <BoxHeader title="List of Contacts" />
         <CustomTable rowData={contactData} columnData={contactColumns} />
       </DashboardBox>
       <DashboardBox gridArea="f">
