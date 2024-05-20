@@ -41,3 +41,49 @@ export const contactColumns = [
     renderCell: (params) => `${params.value}`,
   },
 ]
+
+export const contactModalCommonColumns = [
+  {
+    field: 'id',
+    headerName: 'Contact ID',
+    flex: 0.1,
+  },
+  {
+    field: 'title',
+    headerName: 'Title',
+    flex: 1,
+  },
+  {
+    field: 'organisation_id',
+    headerName: 'Organisation ID',
+    flex: 0.15,
+  },
+  {
+    field: 'system_score',
+    headerName: 'System Score',
+    flex: 0.25,
+  },
+]
+
+export const contactModalColumns = [
+  {
+    field: 'asset_id',
+    headerName: 'Contact ID',
+    flex: 0.1,
+  },
+  {
+    field: '_id',
+    headerName: 'Recommendation ID',
+    flex: 0.1,
+  },
+  {
+    field: 'user_id',
+    headerName: 'User ID',
+    flex: 0.1,
+  },
+  {
+    field: 'creator_id',
+    headerName: 'Creator ID',
+    flex: 0.1,
+  },
+]

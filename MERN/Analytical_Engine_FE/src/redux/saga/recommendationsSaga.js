@@ -18,7 +18,7 @@ function* recommendationsSagaWorker({ payload }) {
       `${process.env.VITE_API_URL}/recommendations/${assest_type}/${queryString}`
     )
     const payload = {
-      response: response.data.recommendations,
+      response: response?.data?.recommendations || [],
       asset: assest_type,
     }
     yield put(getAssestRecommendationsResponseAction(payload))

@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import DashboardBox from '@/utils/DashboardBox'
 import BoxHeader from '@/utils/BoxHeader'
 import BarChart from '@/utils/CustomBarChart'
-import { Box, Button, Typography, useTheme } from '@mui/material'
+import { Box, Button, Modal, Typography, styled } from '@mui/material'
 import CustomTable from '@/utils/CustomTable'
 import { contactColumns } from '@/const/dataGridColumn'
 import { connect } from 'react-redux'
 import { getAssestRecommendationsRequestAction } from '../../../redux/actions/recommendationsAction'
+import ContactRecommendation from './ContactRecommendation'
 
 function Row2({
   domainCount,
@@ -17,16 +18,23 @@ function Row2({
   const margin = isAboveMediumScreens ? '7px auto' : '10px auto'
   const height = isAboveMediumScreens ? '78%' : '86%'
   const [selectedRows, setSelectedRows] = useState([])
+  const [showModal, setShowModal] = useState(false)
 
   const fetchContactRecommendations = () => {
     getAssestRecommendationsRequest({
       assest_type: 'contact',
       assest_ids: selectedRows,
     })
+    setShowModal(true)
   }
+
+  const handleModalClose = () => setShowModal(false)
 
   return (
     <>
+      <Modal open={showModal} onClose={handleModalClose}>
+        <ContactRecommendation selectedRows={selectedRows} />
+      </Modal>
       <DashboardBox gridArea="e" trn="scale(1.015)">
         <BoxHeader title="List of Contacts" />
         <CustomTable
@@ -58,13 +66,7 @@ function Row2({
             backgroundClip: 'text',
           }}
         >
-          <Typography
-            variant="h3"
-            color="inherit"
-            bgcolor="inherit"
-            fontWeight={500}
-            fontSize={18}
-          >
+          <InsightsTypography variant="h3">
             This dashboard provides an overview of contact data, highlighting
             that California, New York, and Illinois have the highest contact
             counts, with Los Angeles, New York, and Chicago being the top
@@ -73,7 +75,7 @@ function Row2({
             contacts list includes detailed information such as names, emails,
             and descriptions, while the domain "temporary.org" is the most
             commonly used among contacts.
-          </Typography>
+          </InsightsTypography>
         </Box>
       </DashboardBox>
       <DashboardBox gridArea="g">
@@ -91,3 +93,10 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Row2)
+
+const InsightsTypography = styled(Typography)({
+  color: 'inherit',
+  backgroundColor: 'inherit',
+  fontWeight: 500,
+  fontSize: 18,
+})

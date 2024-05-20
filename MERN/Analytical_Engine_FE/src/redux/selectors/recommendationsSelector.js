@@ -4,5 +4,5 @@ export const getRecommendationsReducer = (state) => state.recommendationsReducer
 
 export const getContactsRecommendationSelector = createSelector(
   [getRecommendationsReducer],
-  (state) => state.contacts
+  (state) => state.contact
 )

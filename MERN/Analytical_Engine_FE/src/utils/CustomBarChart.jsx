@@ -1,4 +1,3 @@
-import { useTheme } from '@mui/material'
 import React from 'react'
 import {
   Bar,
@@ -12,7 +11,6 @@ import {
 } from 'recharts'
 
 function CustomBarChart({ dataCount, angle = -25, textAnchor = 'end' }) {
-  const palette = useTheme()
   return (
     <ResponsiveContainer width="100%" height="85%">
       <BarChart

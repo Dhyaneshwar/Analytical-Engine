@@ -2,11 +2,18 @@ import React, { useRef } from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 
-function CustomTable({ rowData, columnData, height = '78%', setSelectedRows }) {
+function CustomTable({
+  rowData,
+  columnData,
+  height = '78%',
+  setSelectedRows = () => {},
+  overflow = true,
+}) {
   const handleSelectionChange = (selectedRowIds) => {
     setSelectedRows(selectedRowIds)
   }
-
+  const overflowWidth = overflow ? '1400px' : '100%'
+  const overflowX = overflow ? 'auto' : 'inherit'
   return (
     <Box
       mt="0.5rem"
@@ -14,7 +21,7 @@ function CustomTable({ rowData, columnData, height = '78%', setSelectedRows }) {
       sx={{
         height,
         width: '100%',
-        overflowX: 'auto',
+        overflowX,
         '& .MuiDataGrid-root': {
           color: '#d1d3da',
           border: 'none',
@@ -33,7 +40,7 @@ function CustomTable({ rowData, columnData, height = '78%', setSelectedRows }) {
           },
       }}
     >
-      <Box width="1400px">
+      <Box width={overflowWidth}>
         <DataGrid
           columnHeaderHeight={25}
           rowHeight={35}
