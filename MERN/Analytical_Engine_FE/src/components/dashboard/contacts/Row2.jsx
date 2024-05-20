@@ -1,59 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DashboardBox from '@/utils/DashboardBox'
 import BoxHeader from '@/utils/BoxHeader'
-import BarChart from '../../../utils/CustomBarChart'
-import { Box, Typography, useTheme } from '@mui/material'
-import CustomTable from '../../../utils/CustomTable'
+import BarChart from '@/utils/CustomBarChart'
+import { Box, Button, Typography, useTheme } from '@mui/material'
+import CustomTable from '@/utils/CustomTable'
+import { contactColumns } from '@/const/dataGridColumn'
+import { connect } from 'react-redux'
+import { getAssestRecommendationsRequestAction } from '../../../redux/actions/recommendationsAction'
 
-function Row2({ domainCount, contactData }) {
-  const contactColumns = [
-    {
-      field: '_id',
-      headerName: 'id',
-      flex: 0.15,
-    },
-    {
-      field: 'first_name',
-      headerName: 'First Name',
-      flex: 0.3,
-    },
-    {
-      field: 'last_name',
-      headerName: 'Last Name',
-      flex: 0.3,
-    },
-    {
-      field: 'email',
-      headerName: 'Email',
-      flex: 0.65,
-    },
-    {
-      field: 'city',
-      headerName: 'City',
-      flex: 0.35,
-    },
-    {
-      field: 'state',
-      headerName: 'State',
-      flex: 0.35,
-    },
-    {
-      field: 'country',
-      headerName: 'Country',
-      flex: 0.35,
-    },
-    {
-      field: 'description',
-      headerName: 'Description',
-      flex: 2,
-      renderCell: (params) => `${params.value}`,
-    },
-  ]
+function Row2({
+  domainCount,
+  contactData,
+  isAboveMediumScreens,
+  getAssestRecommendationsRequest,
+}) {
+  const margin = isAboveMediumScreens ? '7px auto' : '10px auto'
+  const height = isAboveMediumScreens ? '78%' : '86%'
+  const [selectedRows, setSelectedRows] = useState([])
+
+  const fetchContactRecommendations = () => {
+    getAssestRecommendationsRequest({
+      assest_type: 'contact',
+      assest_ids: selectedRows,
+    })
+  }
+
   return (
     <>
-      <DashboardBox gridArea="e" trn="none">
+      <DashboardBox gridArea="e" trn="scale(1.015)">
         <BoxHeader title="List of Contacts" />
-        <CustomTable rowData={contactData} columnData={contactColumns} />
+        <CustomTable
+          rowData={contactData}
+          columnData={contactColumns}
+          height={height}
+          setSelectedRows={setSelectedRows}
+        />
+        <Button
+          sx={{
+            margin,
+            display: 'block',
+            border: '1px solid black',
+            fontSize: '16px',
+            textTransform: 'capitalize',
+          }}
+          onClick={fetchContactRecommendations}
+        >
+          Get Selected Contact Recommendations
+        </Button>
       </DashboardBox>
       <DashboardBox gridArea="f">
         <Box
@@ -91,4 +84,10 @@ function Row2({ domainCount, contactData }) {
   )
 }
 
-export default Row2
+const mapStateToProps = (state) => ({})
+
+const mapDispatchToProps = {
+  getAssestRecommendationsRequest: getAssestRecommendationsRequestAction,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Row2)

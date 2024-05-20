@@ -7,7 +7,7 @@ function Home() {
   return (
     <HomeBox>
       <span>
-        Welcome to our analytics engine, designed to transform data into
+        Welcome to our Analytical Engine, designed to transform data into
         actionable insights. Leveraging the powerful MERN stack, this platform
         offers a seamless and robust solution for generating comprehensive
         reports, insights, and analyses.

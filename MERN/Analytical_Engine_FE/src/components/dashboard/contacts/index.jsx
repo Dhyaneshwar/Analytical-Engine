@@ -112,7 +112,11 @@ const Contacts = ({ getContactsRequest, getContacts }) => {
         stateCount={stateCount}
         cityCount={cityCount}
       />
-      <Row2 domainCount={domainCount} contactData={getContacts} />
+      <Row2
+        domainCount={domainCount}
+        contactData={getContacts}
+        isAboveMediumScreens={isAboveMediumScreens}
+      />
     </Box>
   )
 }

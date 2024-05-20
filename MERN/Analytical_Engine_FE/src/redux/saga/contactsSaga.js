@@ -1,16 +1,16 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
-import { GET_CONTACTS_REQUEST_ACTION } from '@/redux/actions/contactsAction'
 import axios from 'axios'
-import { getContactsResponseAction } from '../actions/contactsAction'
+import {
+  GET_CONTACTS_REQUEST_ACTION,
+  getContactsResponseAction,
+} from '@/redux/actions/contactsAction'
 
-function* contactsSagaWorker(action) {
+function* contactsSagaWorker() {
   try {
-    console.log('GET_CONTACTS_REQUEST_ACTION')
     const response = yield call(
       axios.get,
       `${process.env.VITE_API_URL}/contacts`
     )
-    console.log(response)
     yield put(getContactsResponseAction(response.data.contacts))
   } catch (error) {
     console.log(error)

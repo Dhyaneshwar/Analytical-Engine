@@ -41,6 +41,7 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "lodash": "^4.17.21",
     "prettier": "^3.2.5",
+    "qs": "^6.12.1",
     "vite": "^5.2.0"
   }
 }

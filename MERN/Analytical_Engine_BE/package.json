@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "lodash": "^4.17.21",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "qs": "^6.12.1"
   }
 }
