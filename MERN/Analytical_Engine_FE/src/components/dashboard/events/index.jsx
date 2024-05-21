@@ -6,8 +6,9 @@ import {
   resetEventsAction,
 } from '../../../redux/actions/eventsAction'
 import { connect } from 'react-redux'
+import { resetRecommendationsAction } from '../../../redux/actions/recommendationsAction'
 
-function Events({ getEventsRequest, resetEvents }) {
+function Events({ getEventsRequest, resetEvents, resetRecommendations }) {
   const fetchEvents = async () => {
     try {
       await getEventsRequest()
@@ -21,6 +22,7 @@ function Events({ getEventsRequest, resetEvents }) {
 
     return () => {
       resetEvents()
+      resetRecommendations()
     }
   }, [])
   return <Layout title="Data Analysis for Events" />
@@ -35,6 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getEventsRequest: getEventsRequestAction,
   resetEvents: resetEventsAction,
+  resetRecommendations: resetRecommendationsAction,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Events)

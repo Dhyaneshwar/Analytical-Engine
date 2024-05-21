@@ -38,7 +38,6 @@ export const contactColumns = [
     field: 'description',
     headerName: 'Description',
     flex: 2,
-    renderCell: (params) => `${params.value}`,
   },
 ]
 
@@ -85,5 +84,44 @@ export const contactModalColumns = [
     field: 'creator_id',
     headerName: 'Creator ID',
     flex: 0.1,
+  },
+]
+
+export const userColumns = [
+  {
+    field: '_id',
+    headerName: 'id',
+    flex: 0.15,
+  },
+  {
+    field: 'first_name',
+    headerName: 'First Name',
+    flex: 0.3,
+  },
+  {
+    field: 'last_name',
+    headerName: 'Last Name',
+    flex: 0.3,
+  },
+  {
+    field: 'email',
+    headerName: 'Email',
+    flex: 0.65,
+  },
+  {
+    field: 'position',
+    headerName: 'Position',
+    flex: 0.35,
+  },
+  {
+    field: 'gender',
+    headerName: 'Gender',
+    flex: 0.35,
+    renderCell: (params) => {
+      if (params.formattedValue === 'm') {
+        return 'Male'
+      }
+      return 'Female'
+    },
   },
 ]

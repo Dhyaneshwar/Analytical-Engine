@@ -6,8 +6,13 @@ import {
 } from '../../../redux/actions/organisationsAction'
 import { getOrganisationsSelector } from '../../../redux/selectors/organisationsSelector'
 import { connect } from 'react-redux'
+import { resetRecommendationsAction } from '../../../redux/actions/recommendationsAction'
 
-function Organisations({ getOrganisationsRequest, resetOrganisations }) {
+function Organisations({
+  getOrganisationsRequest,
+  resetOrganisations,
+  resetRecommendations,
+}) {
   const fetchOrganisations = async () => {
     try {
       await getOrganisationsRequest()
@@ -21,6 +26,7 @@ function Organisations({ getOrganisationsRequest, resetOrganisations }) {
 
     return () => {
       resetOrganisations()
+      resetRecommendations()
     }
   }, [])
 
@@ -36,6 +42,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getOrganisationsRequest: getOrganisationsRequestAction,
   resetOrganisations: resetOrganisationsAction,
+  resetRecommendations: resetRecommendationsAction,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Organisations)

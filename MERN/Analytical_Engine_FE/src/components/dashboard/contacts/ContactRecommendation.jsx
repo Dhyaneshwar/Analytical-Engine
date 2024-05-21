@@ -24,6 +24,9 @@ import {
 } from 'recharts'
 
 function ContactRecommendation({ getContactRecommendations, selectedRows }) {
+  const sortedSelectedRows = selectedRows.sort((a, b) => {
+    return Number(a) - Number(b)
+  })
   if (_.isEmpty(getContactRecommendations)) {
     return (
       <ModalContainer wd="50%" ht="50%">
@@ -42,7 +45,7 @@ function ContactRecommendation({ getContactRecommendations, selectedRows }) {
           color="#242427"
           mb="20px"
         >
-          {selectedRows.join(', ')}
+          {sortedSelectedRows.join(', ')}
         </Typography>
         <Typography variant="h3" fontWeight={600} m={'20px 0'} color="#242427">
           Please select some other rows (like 150, 165, 183, 199, 220, 221, 259)
@@ -68,7 +71,7 @@ function ContactRecommendation({ getContactRecommendations, selectedRows }) {
   return (
     <ModalContainer>
       <Typography variant="h1" textAlign="center" m={'15px 0'} fontWeight={600}>
-        Contact Title and System Score
+        Table about Contact Title, Organisation ID and System Score
       </Typography>
       <CustomTable
         rowData={result}
@@ -77,7 +80,7 @@ function ContactRecommendation({ getContactRecommendations, selectedRows }) {
       />
 
       <Typography variant="h1" textAlign="center" mt={'25px'} fontWeight={600}>
-        Contact x System Score
+        Contact and its System Score
       </Typography>
       <Box
         width="75%"
@@ -113,9 +116,9 @@ function ContactRecommendation({ getContactRecommendations, selectedRows }) {
               style={{ fontSize: '10px' }}
             >
               <Label
-                value="asset_id"
+                value="Asset ID"
                 position="insideBottom"
-                offset={-15}
+                offset={-10}
                 fill="black"
                 style={{ fontSize: '15px' }}
               />

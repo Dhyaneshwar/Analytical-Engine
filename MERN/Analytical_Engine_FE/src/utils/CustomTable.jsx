@@ -13,7 +13,7 @@ function CustomTable({
     setSelectedRows(selectedRowIds)
   }
   const overflowWidth = overflow ? '1400px' : '100%'
-  const overflowX = overflow ? 'auto' : 'inherit'
+  const overflowValue = overflow ? 'auto' : 'inherit'
   return (
     <Box
       mt="0.5rem"
@@ -21,7 +21,8 @@ function CustomTable({
       sx={{
         height,
         width: '100%',
-        overflowX,
+        overflowX: overflowValue,
+        overflowY: 'auto',
         '& .MuiDataGrid-root': {
           color: '#d1d3da',
           border: 'none',
