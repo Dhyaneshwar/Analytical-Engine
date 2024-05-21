@@ -10,7 +10,12 @@ import {
   YAxis,
 } from 'recharts'
 
-function CustomBarChart({ dataCount, angle = -25, textAnchor = 'end' }) {
+function CustomBarChart({
+  dataCount,
+  angle = -25,
+  textAnchor = 'end',
+  labelHeight = 45,
+}) {
   return (
     <ResponsiveContainer width="100%" height="85%">
       <BarChart
@@ -19,7 +24,7 @@ function CustomBarChart({ dataCount, angle = -25, textAnchor = 'end' }) {
           top: 25,
           right: 20,
           left: 0,
-          bottom: 15,
+          bottom: 5,
         }}
       >
         <defs>
@@ -35,6 +40,8 @@ function CustomBarChart({ dataCount, angle = -25, textAnchor = 'end' }) {
           textAnchor={textAnchor}
           axisLine={false}
           tickLine={false}
+          interval={0}
+          height={labelHeight}
         />
         <YAxis axisLine={false} tickLine={false} style={{ fontSize: '10px' }} />
         <Tooltip />

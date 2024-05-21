@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Layout from '../../../utils/Layout'
 import {
   getUsersRequestAction,
   resetUsersAction,
 } from '../../../redux/actions/usersAction'
 import { getUsersSelector } from '../../../redux/selectors/usersSelector'
 import { connect } from 'react-redux'
-import { Box, Button, useMediaQuery } from '@mui/material'
+import { Button, useMediaQuery } from '@mui/material'
 import TitleRow from '../../../utils/TitleRow'
 import DashboardBox from '../../../utils/DashboardBox'
 import { userColumns } from '../../../const/dataGridColumn'
@@ -39,6 +38,8 @@ export const gridTemplateSmallScreens = `
   "c"
   "c"
   "c"
+  "c"
+  "d"
   "d"
   "d"
   "d"
@@ -51,7 +52,7 @@ function Users({
 }) {
   const isAboveMediumScreens = useMediaQuery('(min-width: 1200px)')
 
-  const height = isAboveMediumScreens ? '85%' : '75%'
+  const height = isAboveMediumScreens ? '85%' : '60%'
   const margin = isAboveMediumScreens ? '20px auto 3px auto' : '10px auto'
   const [selectedRows, setSelectedRows] = useState([])
   const [genderCount, setGenderCount] = useState([])
@@ -115,7 +116,7 @@ function Users({
         </Button>
       </DashboardBox>
       <DashboardBox gridArea="c">
-        <BoxHeader title="Genders" />
+        <BoxHeader title="Genders of Users" />
         <CustomPieChart dataCount={genderCount} />
       </DashboardBox>
       <DashboardBox gridArea="d">

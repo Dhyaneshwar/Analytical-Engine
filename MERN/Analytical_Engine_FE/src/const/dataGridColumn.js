@@ -125,3 +125,47 @@ export const userColumns = [
     },
   },
 ]
+
+export const organisationColumns = [
+  {
+    field: '_id',
+    headerName: 'id',
+    flex: 0.15,
+  },
+  {
+    field: 'name',
+    headerName: 'Name',
+    flex: 0.3,
+  },
+  {
+    field: 'city',
+    headerName: 'City',
+    flex: 0.35,
+  },
+  {
+    field: 'state',
+    headerName: 'State',
+    flex: 0.15,
+  },
+  {
+    field: 'country',
+    headerName: 'Country',
+    flex: 0.35,
+  },
+  {
+    field: 'industry',
+    headerName: 'Industry',
+    flex: 0.35,
+  },
+  {
+    field: 'profile',
+    headerName: 'Profile Needed',
+    flex: 2,
+    renderCell: (params) => params.formattedValue.join(', '),
+  },
+  {
+    field: 'description',
+    headerName: 'Description',
+    flex: 1.5,
+  },
+]
