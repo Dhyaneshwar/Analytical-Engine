@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { yourAction } from '@/redux/actions/yourAction'
+import { testAction } from '@/redux/actions/testAction'
 import {
-  getYourReducerBye,
-  getYourReducerHello,
-} from '@/redux/selectors/yourSelector'
-import './YourPath.css'
+  getTestReducerBye,
+  getTestReducerHello,
+} from '@/redux/selectors/testSelector'
+import './TestPath.css'
 import styled from 'styled-components'
 
-function YourPath({ helloVal, byeVal, yourAct }) {
+function TestPath({ helloVal, byeVal, testAct }) {
   console.log('Few ways to print the ENV variables value:-')
   console.log('VITE_PORT-->', process.env.VITE_PORT)
   console.log('VITE_HELLO-->', import.meta.env.VITE_HELLO)
@@ -18,11 +18,11 @@ function YourPath({ helloVal, byeVal, yourAct }) {
     console.log('button clicked')
     console.log('Hello -', helloVal)
     console.log('Bye -', byeVal)
-    yourAct()
+    testAct()
   }
 
   return (
-    <div className="YourPath_Container">
+    <div className="TestPath_Container">
       <h1>Testing the Redux and Sagas</h1>
       <StyledButton className="LinkButton" onClick={onClickHandler}>
         Click me to test sagas
@@ -35,16 +35,16 @@ function YourPath({ helloVal, byeVal, yourAct }) {
 
 const mapStateToProps = (state) => {
   return {
-    helloVal: getYourReducerHello(state),
-    byeVal: getYourReducerBye(state),
+    helloVal: getTestReducerHello(state),
+    byeVal: getTestReducerBye(state),
   }
 }
 
 const mapDispatchToProps = {
-  yourAct: yourAction,
+  testAct: testAction,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(YourPath)
+export default connect(mapStateToProps, mapDispatchToProps)(TestPath)
 
 const StyledButton = styled.button`
   border-radius: 3px;

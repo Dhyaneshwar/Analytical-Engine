@@ -11,7 +11,7 @@ import Events from '@/components/dashboard/events'
 import Organisations from '@/components/dashboard/organisations'
 import Recommendations from '@/components/dashboard/recommendations'
 import Users from '@/components/dashboard/users'
-import YourPath from '@/components/yourPath/YourPath.jsx'
+import TestPath from '@/components/testPath/TestPath.jsx'
 import Navbar from '@/components/navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -32,7 +32,7 @@ function App() {
             <Route path="/recommendations" element={<Recommendations />} />
             <Route path="/users" element={<Users />} />
             {/* <Route path="/predictions" element={<Prediction />} /> */}
-            <Route path="/yourPath" element={<YourPath />} />
+            <Route path="/testPath" element={<TestPath />} />
           </Routes>
         </Box>
       </ThemeProvider>
