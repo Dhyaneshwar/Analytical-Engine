@@ -1,8 +1,8 @@
-import BoxHeader from "@/components/BoxHeader";
-import DashboardBox from "@/components/DashboardBox";
-import { useGetKpisQuery } from "@/state/api";
-import { useTheme } from "@mui/material";
-import { useMemo } from "react";
+import BoxHeader from '@/components/BoxHeader'
+import DashboardBox from '@/components/DashboardBox'
+import { useGetKpisQuery } from '@/state/api'
+import { useTheme } from '@mui/material'
+import { useMemo } from 'react'
 import {
   ResponsiveContainer,
   CartesianGrid,
@@ -16,11 +16,11 @@ import {
   Line,
   Tooltip,
   Area,
-} from "recharts";
+} from 'recharts'
 
 const Row1 = () => {
-  const { palette } = useTheme();
-  const { data } = useGetKpisQuery();
+  const { palette } = useTheme()
+  const { data } = useGetKpisQuery()
 
   const revenue = useMemo(() => {
     return (
@@ -29,10 +29,10 @@ const Row1 = () => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
-        };
+        }
       })
-    );
-  }, [data]);
+    )
+  }, [data])
 
   const revenueExpenses = useMemo(() => {
     return (
@@ -42,10 +42,10 @@ const Row1 = () => {
           name: month.substring(0, 3),
           revenue: revenue,
           expenses: expenses,
-        };
+        }
       })
-    );
-  }, [data]);
+    )
+  }, [data])
 
   const revenueProfit = useMemo(() => {
     return (
@@ -55,10 +55,10 @@ const Row1 = () => {
           name: month.substring(0, 3),
           revenue: revenue,
           profit: (revenue - expenses).toFixed(2),
-        };
+        }
       })
-    );
-  }, [data]);
+    )
+  }, [data])
 
   return (
     <>
@@ -109,12 +109,12 @@ const Row1 = () => {
             <XAxis
               dataKey="name"
               tickLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: '10px' }}
             />
             <YAxis
               tickLine={false}
-              axisLine={{ strokeWidth: "0" }}
-              style={{ fontSize: "10px" }}
+              axisLine={{ strokeWidth: '0' }}
+              style={{ fontSize: '10px' }}
               domain={[8000, 23000]}
             />
             <Tooltip />
@@ -159,26 +159,26 @@ const Row1 = () => {
             <XAxis
               dataKey="name"
               tickLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: '10px' }}
             />
             <YAxis
               yAxisId="left"
               tickLine={false}
               axisLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: '10px' }}
             />
             <YAxis
               yAxisId="right"
               orientation="right"
               tickLine={false}
               axisLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: '10px' }}
             />
             <Tooltip />
             <Legend
               height={20}
               wrapperStyle={{
-                margin: "0 0 10px 0",
+                margin: '0 0 10px 0',
               }}
             />
             <Line
@@ -233,12 +233,12 @@ const Row1 = () => {
               dataKey="name"
               axisLine={false}
               tickLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: '10px' }}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: '10px' }}
             />
             <Tooltip />
             <Bar dataKey="revenue" fill="url(#colorRevenue)" />
@@ -246,7 +246,7 @@ const Row1 = () => {
         </ResponsiveContainer>
       </DashboardBox>
     </>
-  );
-};
+  )
+}
 
-export default Row1;
+export default Row1
