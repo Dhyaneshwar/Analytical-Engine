@@ -11,7 +11,7 @@ import Users from '@/components/dashboard/users'
 import TestPath from '@/components/testPath/TestPath.jsx'
 import Navbar from '@/components/navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import DashboardPage from './components/dashboard'
+import Dashboard from './components/dashboard/dashboard'
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), [])
@@ -23,7 +23,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/organisations" element={<Organisations />} />
             <Route path="/users" element={<Users />} />

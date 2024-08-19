@@ -3,6 +3,10 @@ const body_parser = require("body-parser");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const cors = require("cors");
+const KPI = require("./models/KPI.js");
+const Product = require("./models/Product.js");
+const Transaction = require("./models/Transaction.js");
+const { kpis, products, transactions } = require("./data/data.js");
 
 const contactsRoutes = require("./routes/contactsRoutes");
 const contentsRoutes = require("./routes/contentsRoutes");
@@ -11,6 +15,9 @@ const organisationsRoutes = require("./routes/organisationsRoutes");
 const recommendationsRoutes = require("./routes/recommendationsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
 const HttpError = require("./models/http-errors");
+const kpiRoutes = require("./routes/kpi");
+const productRoutes = require("./routes/product");
+const transactionRoutes = require("./routes/transaction");
 
 const app = express();
 app.use(helmet());
@@ -24,6 +31,9 @@ app.use("/api/events", eventsRoutes);
 app.use("/api/organisations", organisationsRoutes);
 app.use("/api/recommendations", recommendationsRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/kpi", kpiRoutes);
+app.use("/api/product", productRoutes);
+app.use("/api/transaction", transactionRoutes);
 
 app.use((req, res, next) => {
   next(new HttpError("No route found", 404));
@@ -47,5 +57,10 @@ mongoose
   .then(() => {
     PORT = process.env.PORT || 5000;
     app.listen(PORT, () => console.log("Active port is ", PORT));
+
+    // Triggerred only once
+    // KPI.insertMany(kpis);
+    // Product.insertMany(products);
+    // Transaction.insertMany(transactions);
   })
   .catch((err) => console.log(err));

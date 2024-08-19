@@ -5,6 +5,7 @@ import eventsReducer from './eventsReducer'
 import organisationsReducer from './organisationsReducer'
 import usersReducer from './usersReducer'
 import recommendationsReducer from './recommendationsReducer'
+import { api } from '@/state/api'
 
 const rootReducer = combineReducers({
   contactsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   organisationsReducer,
   recommendationsReducer,
   usersReducer,
+  [api.reducerPath]: api.reducer,
 })
 
 export default rootReducer
