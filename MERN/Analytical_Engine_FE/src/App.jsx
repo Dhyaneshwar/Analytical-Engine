@@ -11,7 +11,7 @@ import TestPath from '@/components/testPath/TestPath.jsx'
 import Navbar from '@/components/navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Dashboard from './components/dashboard/dashboard'
-import Predictions from './components/dashboard/predictions'
+import Predictions from './components/predictions'
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), [])

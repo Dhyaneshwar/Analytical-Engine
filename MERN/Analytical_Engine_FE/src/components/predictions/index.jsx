@@ -1,7 +1,7 @@
 import DashboardBox from '@/components/DashboardBox'
 import FlexBetween from '@/components/FlexBetween'
 import { useGetKpisQuery } from '@/state/api'
-import { Box, Button, Typography, useTheme } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import {
   CartesianGrid,
@@ -17,8 +17,7 @@ import {
 import regression from 'regression'
 
 const Predictions = () => {
-  const { palette } = useTheme()
-  const [isPredictions, setIsPredictions] = useState(false)
+  const [isPredictions, setIsPredictions] = useState(true)
   const { data: kpiData } = useGetKpisQuery()
 
   const formattedData = useMemo(() => {
@@ -29,8 +28,7 @@ const Predictions = () => {
       return [i, revenue]
     })
     const regressionLine = regression.linear(formatted)
-
-    return monthData.map(({ month, revenue }, i) => {
+    const regressionData = monthData.map(({ month, revenue }, i) => {
       return {
         name: month,
         'Actual Revenue': revenue,
@@ -38,10 +36,11 @@ const Predictions = () => {
         'Predicted Revenue': regressionLine.predict(i + 12)[1],
       }
     })
+    return regressionData
   }, [kpiData])
 
   return (
-    <DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
+    <DashboardBox width="100%" height="92vh" p="1rem" overflow="hidden">
       <FlexBetween m="1rem 2.5rem" gap="1rem">
         <Box>
           <Typography variant="h3">Revenue and Predictions</Typography>
@@ -53,8 +52,8 @@ const Predictions = () => {
         <Button
           onClick={() => setIsPredictions(!isPredictions)}
           sx={{
-            color: palette.grey[900],
-            backgroundColor: palette.grey[700],
+            color: '#242427',
+            backgroundColor: '#6b6d74',
             boxShadow: '0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,.4)',
           }}
         >
@@ -63,6 +62,8 @@ const Predictions = () => {
       </FlexBetween>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
+          width={730}
+          height={250}
           data={formattedData}
           margin={{
             top: 20,
@@ -71,7 +72,7 @@ const Predictions = () => {
             bottom: 80,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
+          <CartesianGrid strokeDasharray="3 3" stroke={'#48494e'} />
           <XAxis dataKey="name" tickLine={false} style={{ fontSize: '10px' }}>
             <Label value="Month" offset={-5} position="insideBottom" />
           </XAxis>
@@ -93,7 +94,7 @@ const Predictions = () => {
           <Line
             type="monotone"
             dataKey="Actual Revenue"
-            stroke={palette.primary.main}
+            stroke={'#12efc8'}
             strokeWidth={0}
             dot={{ strokeWidth: 5 }}
           />
@@ -107,7 +108,7 @@ const Predictions = () => {
             <Line
               strokeDasharray="5 5"
               dataKey="Predicted Revenue"
-              stroke={palette.secondary[500]}
+              stroke={'#f2b455'}
             />
           )}
         </LineChart>
