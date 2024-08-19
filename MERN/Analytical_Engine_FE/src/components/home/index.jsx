@@ -26,15 +26,14 @@ function Home() {
       <br />
       <span>
         This platform supports a wide array of data collections including{' '}
+        <CustomLink to="/dashboard">Dashboard</CustomLink>,{' '}
         <CustomLink to="/contacts">Contacts</CustomLink>,{' '}
-        <CustomLink to="/contents">Contents</CustomLink>,{' '}
-        <CustomLink to="/events">Events</CustomLink>,{' '}
         <CustomLink to="/organisations">Organisations</CustomLink>,{' '}
-        <CustomLink to="/recommendations">Recommendations</CustomLink> and{' '}
-        <CustomLink to="/users">Users</CustomLink>. With advanced analytics
-        capabilities, user can effortlessly generate and visualize data through
-        various graphs such as bar graphs, pie charts, scatter plots, line
-        charts, and detailed tables.
+        <CustomLink to="/users">Users</CustomLink>,{' '}
+        <CustomLink to="/predictions">Prediction</CustomLink>. With advanced
+        analytics capabilities, user can effortlessly generate and visualize
+        data through various graphs such as bar graphs, pie charts, scatter
+        plots, line charts, and detailed tables.
       </span>
       <br />
       <br />

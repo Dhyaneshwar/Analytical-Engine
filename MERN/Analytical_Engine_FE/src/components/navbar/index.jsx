@@ -21,26 +21,20 @@ const Navbar = (props) => {
       {isAboveMediumScreens && (
         <FlexBetween gap="2rem">
           <div>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </div>
+          <div>
             <NavLink to="/contacts">Contacts</NavLink>
-          </div>
-          <div>
-            <NavLink to="/contents">Contents</NavLink>
-          </div>
-          <div>
-            <NavLink to="/events">Events</NavLink>
           </div>
           <div>
             <NavLink to="/organisations">Organisations</NavLink>
           </div>
           <div>
-            <NavLink to="/recommendations">Recommendations</NavLink>
-          </div>
-          <div>
             <NavLink to="/users">Users</NavLink>
           </div>
-          {/* <div>
+          <div>
             <NavLink to="/predictions">Predictions</NavLink>
-          </div> */}
+          </div>
         </FlexBetween>
       )}
       {!isAboveMediumScreens && <Navigation />}
